@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samuel Kabatha | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  backdrop-filter: blur(8px);
+  text-align: center;
+  z-index: 100;
+}
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a:hover { color: #ffcc00; }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1581092795367-7b2b9f585f43') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { font-size: 3.5rem; margin: 0; }
+.hero p { font-size: 1.2rem; }
+.hero button {
+  margin-top: 20px;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 6px;
+  background: #ffcc00;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+section { padding: 90px 10%; }
+h2 { margin-bottom: 25px; }
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+/* BASIC CARD */
+.card {
+  background: #111;
+  color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* VIDEO CARD */
+.video-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* GRADIENT BORDER */
+.video-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    #ffcc00,
+    #ff0066,
+    #00ffd5,
+    #ffcc00
+  );
+  background-size: 400% 400%;
+  animation: glow 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* VIDEO */
+.video-card video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 0.6s ease;
+}
+.video-card:hover video {
+  transform: scale(1.08);
+}
+
+/* OVERLAY */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+}
+.video-overlay h3 { margin: 0; }
+.video-overlay p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* DONATIONS */
+.donate {
+  background: #111;
+  color: #fff;
+  border-radius: 16px;
+  padding: 50px;
+  text-align: center;
+}
+.donate h2 { margin-bottom: 10px; }
+.donate p { opacity: 0.8; }
+.donate a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 34px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ffcc00, #ff0066);
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}.donate-btn {
+  display: inline-block;
+  margin: 15px 10px 0;
+  padding: 14px 36px;
+  border-radius: 30px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.paypal {
+  background: linear-gradient(45deg, #003087, #009cde);
+  color: #fff;
+}
+
+.mpesa {
+  background: linear-gradient(45deg, #2db300, #7cff00);
+  color: #000;
+}
+
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#donate">Support</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <h1>Hi, I’m Samuel Kabatha</h1>
+    <p>Web Developer • Designer • Systems Builder</p>
+    <button onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
+  </div>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I’m a Computer Science graduate from Machakos University,
+    passionate about building scalable, real-world systems.
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+
+    <div class="video-card">
+      <video muted loop playsinline preload="auto" poster="images/hotel.jpg">
+        <source src="videos/hotel.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <h3>Hotel Management System</h3>
+        <p>Reservations • Billing • Analytics</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <video muted loop playsinline preload="auto" poster="images/school.jpg">
+        <source src="videos/school.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <h3>School Portal System</h3>
+        <p>Students • Results • Admin</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <video muted loop playsinline preload="auto" poster="images/cms.jpg">
+        <source src="videos/cms.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <h3>CMS + Analytics</h3>
+        <p>Content • Tracking • Reports</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="donate">
+  <div class="donate">
+    <h2>Support My Work</h2>
+    <p>
+      If you enjoy my projects and want to support my journey,
+      you can donate using PayPal or M-Pesa.
+    </p>
+
+    <!-- PayPal Button -->
+    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+      <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID">
+      <button class="donate-btn paypal">💙 Donate with PayPal</button>
+    </form>
+
+    <!-- MPESA Button -->
+    <a href="#mpesa" class="donate-btn mpesa">📱 Donate via M-Pesa</a>
+  </div>
+</section>
+<section id="mpesa">
+  <div class="donate">
+    <h2>M-Pesa Support</h2>
+    <p><strong>Till:</strong> 8151142</p>
+    <p><strong>Account:</strong> SAMUELKABATHA</p>
+    <p><strong>Phone:</strong> 0796 071 670</p>
+    <p style="opacity:0.7;">
+      After payment, kindly email confirmation.
+    </p>
+  </div>
+</section>
+
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <strong>samuelkabatha63@gmail.com</strong></p>
+</section>
+
+<footer>
+  © 2026 Samuel Kabatha • Built with ❤️
+</footer>
+
+<script>
+const spiders = #any(2, span)
+
+addEventListener("pointermove", (e) =>{
+    spiders.forEach(spider =>{
+          spider.follow(e.clientX, e.clientY)
+     })
+});
+requestAnimationFrame(function anim(t0 {
+    if (w !== innerWidth) w = canvas.width = innerWidth;
+    if (h !== innerHeight) h = canvas.height = innerheight;
+ctx.fillStyle = "#000";
+drawCircle(0, 0, w * 10);
+ctx.fillStyle = ctx.strokeStyle = "#fff";
+t/=1000
+spiders.forEach(spider => spider.tick(t))
+requestAnimationFrame(anim);
+});
+document.querySelectorAll('.video-card').forEach(card => {
+  const video = card.querySelector('video');
+
+  card.addEventListener('mouseenter', () => video.play());
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+
+  card.addEventListener('touchstart', () => video.play());
+});
+</script>
+
+</body>
+</html>
